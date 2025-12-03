@@ -28,6 +28,7 @@ import com.dessalines.thumbkey.ui.components.settings.backupandrestore.BackupAnd
 import com.dessalines.thumbkey.ui.components.settings.behavior.BehaviorScreen
 import com.dessalines.thumbkey.ui.components.settings.lookandfeel.LookAndFeelScreen
 import com.dessalines.thumbkey.ui.components.settings.modifykeys.ModifyKeysScreen
+import com.dessalines.thumbkey.ui.components.settings.trainer.TrainerScreen
 import com.dessalines.thumbkey.ui.components.setup.SetupScreen
 import com.dessalines.thumbkey.ui.theme.ThumbkeyTheme
 import com.dessalines.thumbkey.utils.ANIMATION_SPEED
@@ -159,6 +160,13 @@ class MainActivity : AppCompatActivity() {
                         BackupAndRestoreScreen(
                             navController = navController,
                             appSettingsViewModel = appSettingsViewModel,
+                        )
+                    }
+                    composable(
+                        route = "trainer",
+                    ) {
+                        TrainerScreen(
+                            navController = navController,
                         )
                     }
                 }

@@ -15,6 +15,7 @@ import androidx.compose.material.icons.outlined.InstallMobile
 import androidx.compose.material.icons.outlined.KeyboardAlt
 import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.Restore
+import androidx.compose.material.icons.outlined.Swipe
 import androidx.compose.material.icons.outlined.TouchApp
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -187,6 +188,16 @@ fun SettingsScreen(
                         onClick = {
                             openLink(USER_GUIDE_URL, ctx)
                         },
+                    )
+                    Preference(
+                        title = { Text(stringResource(R.string.trainer)) },
+                        icon = {
+                            Icon(
+                                imageVector = Icons.Outlined.Swipe,
+                                contentDescription = null,
+                            )
+                        },
+                        onClick = { navController.navigate("trainer") },
                     )
                     Preference(
                         title = { Text(stringResource(R.string.about)) },
