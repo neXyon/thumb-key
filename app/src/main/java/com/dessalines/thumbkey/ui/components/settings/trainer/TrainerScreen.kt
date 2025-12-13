@@ -7,7 +7,10 @@ import android.util.Log
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -51,6 +54,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -137,6 +141,13 @@ fun TrainerScreen(navController: NavController) {
             SimpleTopAppBar(text = stringResource(R.string.trainer), navController = navController)
         },
         content = { padding ->
+            val paddingToAdd = 64.dp;
+            val newPadding = PaddingValues(
+                start = padding.calculateStartPadding(LayoutDirection.Ltr) + paddingToAdd,
+                top = padding.calculateTopPadding(),
+                end = padding.calculateEndPadding(LayoutDirection.Ltr) + paddingToAdd,
+                bottom = padding.calculateBottomPadding()
+            )
             Column(
                 modifier = Modifier
                     //.padding(padding)
@@ -145,7 +156,7 @@ fun TrainerScreen(navController: NavController) {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(columns), // M columns
                     modifier = Modifier
-                        .padding(padding)
+                        .padding(newPadding),
                     /*.fillMaxSize(),
             contentPadding = PaddingValues(8.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
